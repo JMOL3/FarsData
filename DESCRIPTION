@@ -8,7 +8,8 @@ Description: Package reads and summarises the Fatality Analysis Reporting System
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Imports: dplyr,
+Imports:readr, 
+    dplyr,
     tidyr,
     maps,
     graphics
