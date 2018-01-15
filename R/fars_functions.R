@@ -65,7 +65,7 @@ make_filename <- function(year) {
 #'
 #' @return A list of data frames, each containing the month and year data for the Fars data sets requested.
 #'
-#' @note  if an invalid year is given, returns \code"invalid year"
+#' @note  if an invalid year is given, returns \code{"invalid year"}
 #'
 #' @importFrom dplyr mutate select
 #'
