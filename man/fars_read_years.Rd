@@ -18,7 +18,7 @@ A list of data frames, each containing the month and year data for the Fars data
  each data frame containing the year and month data of observations, but not the obsevations themselves
 }
 \note{
-if an invalid year is given, returns \code"invalid year"
+if an invalid year is given, returns \code{"invalid year"}
 }
 \examples{
 fars_read_years(2013)
