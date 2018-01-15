@@ -7,7 +7,7 @@ Maintainer: James.Moloney3@gmail.com
 Description: Package reads and summarises the Fatality Analysis Reporting System data.
 Useful for reading data  into data frames, summarising by months and years, and mapping fatalities by state/territories.
     
-License: What license is it under?
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports: dplyr,
