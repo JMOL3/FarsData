@@ -16,7 +16,8 @@
 #' @importFrom readr read_csv
 #'
 #' @examples
-#' fars_read("accident_2013.csv.bz2")
+#' fars_read(system.file('extdata', 'accident_2013.csv.bz2',
+#'                              package = 'JMolFarsPkg'))
 #'
 #' \dontrun{
 #' fars_read("doesnt_exist.csv") # error
@@ -57,7 +58,8 @@ make_filename <- function(year) {
 #' Read FARS Files over multiple years
 #'
 #' \code{fars_read_years} returns a list of data frames containing Fatality Analysis Reporting System data,
-#'  each data frame containing the year and month data of observations, but not the obsevations themselves
+#'  each data frame containing the year and month data of observations, but not the obsevations themselves.
+#'  requires valid FARS csv in the WD.
 #'
 #'
 #' @param years A vector of strings, each containing a number (integer, numeric or string) that
@@ -72,8 +74,11 @@ make_filename <- function(year) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#'
 #' fars_read_years(2013)
 #' fars_read_years(c(2013,2014))
+#' }
 fars_read_years <- function(years) {
         lapply(years, function(year) {
                 file <- make_filename(year)
@@ -92,20 +97,24 @@ fars_read_years <- function(years) {
 #'
 #' \code{fars_summarize_years} presents a summary of
 #'  Fatality Analysis Reporting System data by year and month
-#'  over a given vector of years
+#'  over a given vector of years. Requires valid FARS csv in the WD.
 #'
 #' @param years A vector of strings, each containing a number (integer, numeric or string) that
 #'  can be coerced into a string, to represent the years of the data required
 #'
 #' @return Returns dataframe of month by year values for FARS data, will only return years with valid FARS data
 #'
-#' @importFrom tidyr spread
+#' @importFrom tidyr spread %>%
 #' @importFrom dplyr bind_rows group_by summarize
 #'
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' fars_summarise_years(c(2013,2014,2015))
+#'
+#' }
+#'
 #' \dontrun{
 #' fars_summarise_years("3009")# error
 #' }
@@ -120,7 +129,7 @@ fars_summarize_years <- function(years) {
 #' Map FARS Data
 #'
 #' \code{fars_map_state} maps Fatality Analysis Reporting System data for a given state and year,
-#'  plotting individual vehicle fatality sites over a map of the state for a given year.
+#'  plotting individual vehicle fatality sites over a map of the state for a given year. Requires valid FARS csv in the WD.
 #'
 #' @param state.num A number (integer, numeric or string) that can be coerced into a string,
 #'  between 1 and 56 (excluding3,7 and 14), representing alphabetically the 50 us states,
@@ -143,11 +152,11 @@ fars_summarize_years <- function(years) {
 #' @export
 #'
 #' @examples
-#' fars_map_state(1,2015)
-#' fars_map_state(28,2013)
+#' \dontrun{fars_map_state(1,2013)
+#' fars_map_state(28,2013)}
 #'
 #' \dontrun{
-#' fars_map_state(Alabama,2015)# error
+#' fars_map_state(Alabama,2013)# error
 #' }
 fars_map_state <- function(state.num, year) {
         filename <- make_filename(year)

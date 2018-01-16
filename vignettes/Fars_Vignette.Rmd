@@ -1,25 +1,24 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "Fars Data"
+author: "James Moloney"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Fars Data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+```
+library(JMolFarsPkg)
+```
+This is a package designed to enable easy reading and summarisation of Fatality Analysis Reporting System (FARS) data 
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+# The Data
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+FARS data is sourced from the National Highway Traffic Safety Administration ([NHTSA](https://www.nhtsa.gov/research-data/fatality-analysis-reporting-system-fars), and contains data relating to fatalities on US highways by state and territory including location data, information on vehicles involved, number of victims and presence of alcohol.
+# The Functions
 
-## Vignette Info
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
-
-## Styles
 
 The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
 

@@ -21,7 +21,8 @@ If the specified filename does not exist,
  returns "file '" \code{filename}"' does not exist".
 }
 \examples{
-fars_read("accident_2013.csv.bz2")
+fars_read(system.file('extdata', 'accident_2013.csv.bz2',
+                             package = 'JMolFarsPkg'))
 
 \dontrun{
 fars_read("doesnt_exist.csv") # error

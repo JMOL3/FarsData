@@ -20,7 +20,7 @@ Returns a map of fatalities in the given state for the given year,
 }
 \description{
 \code{fars_map_state} maps Fatality Analysis Reporting System data for a given state and year,
- plotting individual vehicle fatality sites over a map of the state for a given year.
+ plotting individual vehicle fatality sites over a map of the state for a given year. Requires valid FARS csv in the WD.
 }
 \note{
 If the state number provided is outside of the range of possible states and territories returns:
@@ -30,10 +30,10 @@ If there are no fatalities found, returns:
  no accidents to plot"
 }
 \examples{
-fars_map_state(1,2015)
-fars_map_state(28,2013)
+\dontrun{fars_map_state(1,2013)
+fars_map_state(28,2013)}
 
 \dontrun{
-fars_map_state(Alabama,2015)# error
+fars_map_state(Alabama,2013)# error
 }
 }

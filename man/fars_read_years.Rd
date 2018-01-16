@@ -15,12 +15,16 @@ A list of data frames, each containing the month and year data for the Fars data
 }
 \description{
 \code{fars_read_years} returns a list of data frames containing Fatality Analysis Reporting System data,
- each data frame containing the year and month data of observations, but not the obsevations themselves
+ each data frame containing the year and month data of observations, but not the obsevations themselves.
+ requires valid FARS csv in the WD.
 }
 \note{
 if an invalid year is given, returns \code{"invalid year"}
 }
 \examples{
+\dontrun{
+
 fars_read_years(2013)
 fars_read_years(c(2013,2014))
+}
 }

@@ -16,10 +16,14 @@ Returns dataframe of month by year values for FARS data, will only return years 
 \description{
 \code{fars_summarize_years} presents a summary of
  Fatality Analysis Reporting System data by year and month
- over a given vector of years
+ over a given vector of years. Requires valid FARS csv in the WD.
 }
 \examples{
+\dontrun{
 fars_summarise_years(c(2013,2014,2015))
+
+}
+
 \dontrun{
 fars_summarise_years("3009")# error
 }
