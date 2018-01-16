@@ -1,7 +1,7 @@
 ---
 title: "Fars Data"
 author: "James Moloney"
-date: "`r Sys.Date()`"
+date: "2018-01-16"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Fars Data}
@@ -11,47 +11,56 @@ vignette: >
 ```
 library(JMolFarsPkg)
 ```
-This is a package designed to enable easy reading and summarisation of Fatality Analysis Reporting System (FARS) data 
+This is a package designed to enable easy reading and summarisation of Fatality Analysis Reporting System (FARS) data.
+It can be used for quick analysis through summarry sstatistics and graphical outputs, or as a convenient way to read in FARS data sets.
+
+
 
 # The Data
 
-FARS data is sourced from the National Highway Traffic Safety Administration ([NHTSA](https://www.nhtsa.gov/research-data/fatality-analysis-reporting-system-fars), and contains data relating to fatalities on US highways by state and territory including location data, information on vehicles involved, number of victims and presence of alcohol.
+FARS data is sourced from the National Highway Traffic Safety Administration ([NHTSA](https://www.nhtsa.gov/research-data/fatality-analysis-reporting-system-fars)), and contains data relating to fatalities on US highways by state and territory including location data, information on vehicles involved, number of victims and presence of alcohol.
+
+
+***
 # The Functions
+## Reading Fars Data
 
+_fars_read_ is a function that reads in Fatality Analysis Reporting System data.
+You can select the file wanted (using the filename argument)
 
+Example
 
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
-
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
-
-## Figures
-
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+```
+fars_read(system.file('extdata', 'accident_2013.csv.bz2',
+                      package = 'JMolFarsPkg'))
 ```
 
-You can enable figure captions by `fig_caption: yes` in YAML:
+## Make FARS Filename
 
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
-
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
+_make_filename_ formats a filename for Fatality Analysis Reporting System data, given a year as input.
+The year is argument is a number (integer, numeric or string) that can be coerced into a string to represent the year of the data,
+can be any number.
+```
+make_filename(year = '2013')
 ```
 
-Also a quote using `>`:
+## Read FARS Files over multiple years
+_fars_read_years_ returns a list of data frames containing FARS data,
+each data frame containing the year and month data of observations, but not the obsevations themselves.
+requires valid FARS csv in the WD.
+```
+fars_read_years(2013)
+```
 
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+## FARS Summary by Year
+_fars_summarize_years_  presents a summary of
+FARS data by year and month over a given vector of years. Requires valid FARS csv in the WD.
+```
+fars_summarise_years(c(2013,2014,2015))
+```
+## Map FARS Data
+_fars_map_state_ maps Fatality Analysis Reporting System data for a given state and year,
+plotting individual vehicle fatality sites over a map of the state for a given year. Requires valid FARS csv in the WD.
+```
+fars_map_state(1,2013)
+```
